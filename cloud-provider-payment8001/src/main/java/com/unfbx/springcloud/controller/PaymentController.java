@@ -11,14 +11,12 @@ import com.unfbx.springcloud.entity.CommonResult;
 import com.unfbx.springcloud.entity.Payment;
 import com.unfbx.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@RestController("/payment")
+@RestController
+@RequestMapping(value = "/payment")
 @Slf4j
 public class PaymentController {
 
@@ -27,7 +25,8 @@ public class PaymentController {
 
 
     @PostMapping(value = "/create")
-    public CommonResult create(Payment payment){
+
+    public CommonResult create(@RequestBody Payment payment){
         int i = paymentService.create(payment);
         log.info("插入返回值：{}", i);
         if(i > 0){
