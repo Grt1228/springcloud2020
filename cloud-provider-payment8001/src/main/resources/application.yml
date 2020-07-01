@@ -9,6 +9,17 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/springcloud-2020?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
     username: root
     password: 123456
+
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   type-aliases-package: com.unfbx.springcloud.entity
+eureka:
+  client:
+    # 是否将自己注册到EurekaServer默认为：true
+    register-with-eureka: true
+    # 是否从eurekaServer抓取已有的注册信息，默认为true，单节点无所谓，集群必须设置为true才能搭配ribbon使用负载均衡
+    fetchRegistry: true
+    service-url:
+      #单机版
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
