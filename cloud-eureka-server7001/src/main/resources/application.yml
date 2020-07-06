@@ -14,3 +14,6 @@ eureka:
       # 单机 defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
       # 相互注册
       defaultZone: http://eureka7002.com:7002/eureka/
+  server:
+    # 自我保护机制关闭
+    enable-self-preservation: false
